@@ -36,14 +36,14 @@ fi
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.txt /etc/vsftpd/virtual_users.db
 
 # Set passive mode parameters:
-if [ "$PASV_ADDRESS" = "**IPv4**" ]; then
-    export PASV_ADDRESS=$(/sbin/ip route|awk '/default/ { print $3 }')
+if [ "$PASV_ADDRESS" != "**IPv4**" ]; then
+    echo "pasv_address=${PASV_ADDRESS}" >> /etc/vsftpd/vsftpd.conf
 fi
 
 if [ ${LISTEN_PORT} != 21 ];then
     echo "listen_port=${LISTEN_PORT}" >> /etc/vsftpd/vsftpd.conf
 fi 
-echo "pasv_address=${PASV_ADDRESS}" >> /etc/vsftpd/vsftpd.conf
+
 echo "pasv_max_port=${PASV_MAX_PORT}" >> /etc/vsftpd/vsftpd.conf
 echo "pasv_min_port=${PASV_MIN_PORT}" >> /etc/vsftpd/vsftpd.conf
 echo "pasv_addr_resolve=${PASV_ADDR_RESOLVE}" >> /etc/vsftpd/vsftpd.conf

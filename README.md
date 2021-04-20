@@ -42,17 +42,15 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
-* Variable name: `FTP_USER1`、`FTP_USER2`、`FTP_USER3`
-* Default value: admin
-* Accepted values: Any string. Avoid whitespaces and special chars.
-* Description: Username for the default FTP account. If you don't specify it through the `FTP_USER1` environment variable at run time, `admin` will be used by default.
+* 变量名称: `FTP_USER1`、`FTP_USER2`、`FTP_USER3`
+* 默认值: 默认生成`FTP_USER1`用户，值为admin
+* 说明：最多支持3个用户
 
 ----
 
-* Variable name: `FTP_PASS1`、`FTP_PASS2`、`FTP_PASS3`
-* Default value: Random string.
-* Accepted values: Any string.
-* Description: If you don't specify a password for the default FTP account through `FTP_PASS1`, a 16 character random string will be automatically generated. You can obtain this value through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs/).
+* 变量名称: `FTP_PASS1`、`FTP_PASS2`、`FTP_PASS3`
+* 默认值: `FTP_PASS1`的默认值是随机生成的，该密码可以在日志文件中看到。
+* 说明：`FTP_PASS1`、`FTP_PASS2`、`FTP_PASS3`分别是`FTP_USER1`、`FTP_USER2`、`FTP_USER3`的密码
 
 ----
 
